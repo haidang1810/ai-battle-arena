@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Socket } from 'socket.io-client';
+import type { SessionStatus } from '../../types/game-types';
 import { useGameState } from '../../hooks/use-game-state';
 import CaroBoard from './caro-board';
 import ChessBoard from './chess-board';
@@ -11,10 +12,15 @@ interface GamePageProps {
   socket: Socket | null;
   gameId: string;
   onBack: () => void;
+  onGameStatusChange?: (status: SessionStatus) => void;
 }
 
-export default function GamePage({ socket, gameId, onBack }: GamePageProps) {
+export default function GamePage({ socket, gameId, onBack, onGameStatusChange }: GamePageProps) {
   const { game, pause, resume, nextStep, reset } = useGameState(socket, gameId);
+
+  useEffect(() => {
+    onGameStatusChange?.(game.status);
+  }, [game.status, onGameStatusChange]);
   const [stepByStep, setStepByStep] = useState(false);
   const [delayMs, setDelayMs] = useState(1000);
   const [started, setStarted] = useState(false);

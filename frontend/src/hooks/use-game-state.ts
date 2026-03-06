@@ -29,6 +29,9 @@ export function useGameState(socket: Socket | null, gameId: string) {
   const [game, setGame] = useState<GameState>(INITIAL_STATE);
 
   useEffect(() => {
+    // Reset state when gameId changes
+    setGame(INITIAL_STATE);
+
     if (!socket || !gameId) return;
 
     socket.emit('game:join', gameId);
@@ -59,6 +62,9 @@ export function useGameState(socket: Socket | null, gameId: string) {
       },
       'game:error': (data: { error: string }) => {
         setGame((prev) => ({ ...prev, error: data.error, thinkingPlayer: null }));
+      },
+      'game:statusChange': (data: { status: SessionStatus }) => {
+        setGame((prev) => ({ ...prev, status: data.status }));
       },
     };
 

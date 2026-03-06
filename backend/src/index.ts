@@ -84,11 +84,19 @@ io.on('connection', (socket) => {
   });
 
   socket.on('game:pause', (gameId: string) => {
-    gameManager.getGame(gameId)?.pause();
+    const session = gameManager.getGame(gameId);
+    if (session) {
+      session.pause();
+      io.to(`game:${gameId}`).emit('game:statusChange', { status: session.status });
+    }
   });
 
   socket.on('game:resume', (gameId: string) => {
-    gameManager.getGame(gameId)?.resume();
+    const session = gameManager.getGame(gameId);
+    if (session) {
+      session.resume();
+      io.to(`game:${gameId}`).emit('game:statusChange', { status: session.status });
+    }
   });
 
   socket.on('game:nextStep', (gameId: string) => {

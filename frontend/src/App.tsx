@@ -13,6 +13,8 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('setup');
   const [gameId, setGameId] = useState('');
   const [replayId, setReplayId] = useState('');
+  /** Track whether a game is actively running (playing/paused) */
+  const [gameActive, setGameActive] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -21,6 +23,15 @@ export default function App() {
           AI Battle Arena
         </button>
         <div className="flex items-center gap-4">
+          {gameActive && screen !== 'game' && (
+            <button
+              onClick={() => setScreen('game')}
+              className="text-sm text-green-400 hover:text-green-300 transition-colors flex items-center gap-1"
+            >
+              <span className="inline-block w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              Live Game
+            </button>
+          )}
           <button
             onClick={() => setScreen('stats')}
             className="text-sm text-gray-400 hover:text-white transition-colors"
@@ -41,10 +52,16 @@ export default function App() {
       </div>
 
       {screen === 'setup' && (
-        <SetupPage onGameCreated={(id) => { setGameId(id); setScreen('game'); }} />
+        <SetupPage onGameCreated={(id) => { setGameId(id); setGameActive(true); setScreen('game'); }} />
       )}
       {screen === 'game' && (
-        <GamePage socket={socket} gameId={gameId} onBack={() => setScreen('setup')} />
+        <GamePage
+          key={gameId}
+          socket={socket}
+          gameId={gameId}
+          onBack={() => setScreen('setup')}
+          onGameStatusChange={(status) => setGameActive(status === 'playing' || status === 'paused')}
+        />
       )}
       {screen === 'history' && (
         <HistoryPage
