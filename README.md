@@ -6,7 +6,7 @@ An open-source platform where 2 AI models battle each other through board games.
 
 ```bash
 git clone <repo-url>
-cd ai-battle
+cd ai-battle-arena
 docker compose up --build -d
 ```
 
@@ -108,7 +108,7 @@ Invalid moves get 3 retries, then forfeit.
 ## Project Structure
 
 ```
-ai-battle/
+ai-battle-arena/
 ├── backend/                 # Express + Socket.io server
 │   ├── src/
 │   │   ├── engine/          # Game engine core (interface, session, manager)
