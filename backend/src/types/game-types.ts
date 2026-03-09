@@ -1,4 +1,4 @@
-export type GameType = 'caro' | 'chess' | 'battleship';
+export type GameType = 'caro' | 'chess' | 'battleship' | 'jungle';
 export type PlayerIndex = 0 | 1;
 
 export interface PlayerConfig {

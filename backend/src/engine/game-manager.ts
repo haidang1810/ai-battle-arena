@@ -4,6 +4,7 @@ import type { GameSettings, GameType, PlayerConfig, DEFAULT_GAME_SETTINGS } from
 import { CaroEngine } from '../games/caro/caro-engine.js';
 import { ChessEngine } from '../games/chess/chess-engine.js';
 import { BattleshipEngine } from '../games/battleship/battleship-engine.js';
+import { JungleEngine } from '../games/jungle/jungle-engine.js';
 
 /** Factory to create game engines by type */
 function createEngine(gameType: GameType): GameEngine {
@@ -14,6 +15,8 @@ function createEngine(gameType: GameType): GameEngine {
       return new ChessEngine();
     case 'battleship':
       return new BattleshipEngine();
+    case 'jungle':
+      return new JungleEngine();
     default:
       throw new Error(`Game type "${gameType}" not implemented yet`);
   }

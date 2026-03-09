@@ -3,6 +3,7 @@ import type { GameType, RecordedMove } from '../../types/game-types';
 import { useReplay } from '../../hooks/use-replay';
 import CaroBoard from '../game/caro-board';
 import ChessBoard from '../game/chess-board';
+import JungleBoard from '../game/jungle-board';
 
 interface GameRecord {
   id: string;
@@ -70,6 +71,8 @@ function ReplayViewer({ record, onBack }: { record: GameRecord; onBack: () => vo
           <div className="flex justify-center">
             {record.gameType === 'chess' ? (
               <ChessBoard fen={board as string} lastMove={lastMove} />
+            ) : record.gameType === 'jungle' ? (
+              <JungleBoard board={board as number[][]} lastMove={lastMove} />
             ) : (
               <CaroBoard board={board as number[][]} lastMove={lastMove} />
             )}

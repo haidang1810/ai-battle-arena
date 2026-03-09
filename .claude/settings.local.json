@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.ymimports.com)",
+      "WebFetch(domain:liacs.leidenuniv.nl)",
+      "WebFetch(domain:www.chessvariants.com)",
+      "WebFetch(domain:ancientchess.com)",
+      "WebFetch(domain:gambiter.com)",
+      "WebFetch(domain:www.quadibloc.com)",
+      "WebFetch(domain:sites.google.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:kids.kiddle.co)",
+      "Bash(node \"E:/dev/be/ai-battle-arena/.claude/scripts/set-active-plan.cjs\" \"plans/260309-1538-jungle-chess-co-thu-implementation\")",
+      "Bash(node \"$USERPROFILE/.claude/scripts/set-active-plan.cjs\" \"E:/dev/be/ai-battle-arena/plans/260309-1538-jungle-chess-co-thu-implementation\")",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx tsx test-jungle.ts)",
+      "Bash(npx vite build)",
+      "Bash(node --version)",
+      "Bash(node -e \"console.log\\(typeof require\\(''crypto''\\).getRandomValues\\)\")",
+      "Bash(npx eslint src/games/jungle/ src/engine/game-manager.ts src/services/game-system-prompts.ts src/tools/tool-definitions.ts src/types/game-types.ts)",
+      "Bash(npx vite --version)",
+      "Bash(npx eslint src/components/game/jungle-board.tsx src/hooks/jungle-replay-engine.ts src/hooks/use-replay.ts src/components/replay/replay-page.tsx src/components/setup/setup-page.tsx src/components/history/history-page.tsx src/types/game-types.ts)",
+      "Bash(npm run build)",
+      "Bash(npx tsc -b)",
+      "Bash(node -e \":*)",
+      "Bash(node /tmp/test_stalemate.js)",
+      "Bash(node /tmp/test_issues.js)",
+      "Bash(node /tmp/test_capture2.js)",
+      "Bash(node /tmp/test_logic_bugs.js)",
+      "Bash(/tmp/test_system_prompt.js:*)",
+      "Bash(node /tmp/test_system_prompt.js)",
+      "Bash(/tmp/test_use_replay.js:*)",
+      "Bash(node /tmp/test_use_replay.js)",
+      "Bash(nvm list)",
+      "Bash(nvm use 20.20.0)"
+    ]
+  }
+}

@@ -46,6 +46,32 @@ Key strategy:
 - '#' on tracking board means a sunk ship segment
 
 IMPORTANT: Always call get_game_info first to know which phase you're in and what to do.`,
+
+  jungle: `You are an expert Jungle Chess (Co Thu) player. 9x7 board with rivers, traps, and dens.
+8 animals per side ranked 1-8: Rat(1), Cat(2), Wolf(3), Dog(4), Leopard(5), Tiger(6), Lion(7), Elephant(8).
+
+CAPTURE RULES:
+- Higher rank captures equal or lower rank
+- EXCEPTION: Rat(1) captures Elephant(8), but Elephant cannot capture Rat
+- Piece on opponent's trap becomes rank 0 (capturable by anything)
+- Rat in water CANNOT capture Elephant on land
+
+MOVEMENT:
+- All pieces move 1 square orthogonally (up/down/left/right)
+- Lion and Tiger can JUMP across the full river width in one move unless a Rat blocks the path in water
+- Only Rat can enter water squares
+- Pieces CANNOT enter their own den
+
+WIN: Move any piece into opponent's den OR capture all opponent's pieces.
+
+Key strategy:
+- Protect your den -- never leave it unguarded
+- Use Rat to block Lion/Tiger river jumps
+- Use traps defensively -- lure opponents onto your trap squares
+- Rat is powerful for Elephant assassination but vulnerable to Cat
+
+Move format: "fromPos-toPos" with column a-g + row 1-9 (e.g. "a1-a2").
+Player 0 = Red (bottom, rows 1-3). Player 1 = Blue (top, rows 7-9).`,
 };
 
 /** Build the full system prompt for a player */

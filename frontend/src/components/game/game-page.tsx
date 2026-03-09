@@ -5,6 +5,7 @@ import { useGameState } from '../../hooks/use-game-state';
 import CaroBoard from './caro-board';
 import ChessBoard from './chess-board';
 import BattleshipBoard from './battleship-board';
+import JungleBoard from './jungle-board';
 import MoveHistory from './move-history';
 import GameControls from './game-controls';
 
@@ -70,6 +71,11 @@ export default function GamePage({ socket, gameId, onBack, onGameStatusChange }:
             ) : game.state?.board && game.state.gameType === 'chess' ? (
               <ChessBoard
                 fen={game.state.board as string}
+                lastMove={game.state.lastMove as string | undefined}
+              />
+            ) : game.state?.board && game.state.gameType === 'jungle' ? (
+              <JungleBoard
+                board={game.state.board as number[][]}
                 lastMove={game.state.lastMove as string | undefined}
               />
             ) : game.state?.board ? (

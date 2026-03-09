@@ -25,13 +25,13 @@ export const BASE_TOOLS: ChatCompletionTool[] = [
     type: 'function',
     function: {
       name: 'make_move',
-      description: 'Make a move. Caro: "H8". Chess: SAN like "e4","Nf3","O-O". Battleship placement: "carrier:A1:H". Battleship battle: "E5".',
+      description: 'Make a move. Caro: "H8". Chess: SAN like "e4","Nf3","O-O". Battleship placement: "carrier:A1:H". Battleship battle: "E5". Jungle: "a1-a2".',
       parameters: {
         type: 'object',
         properties: {
           position: {
             type: 'string',
-            description: 'The move. Caro: "H8". Chess: "e4". Battleship placement: "shipName:pos:H/V". Battleship battle: "E5".',
+            description: 'The move. Caro: "H8". Chess: "e4". Battleship placement: "shipName:pos:H/V". Battleship battle: "E5". Jungle: "a3-a4".',
           },
         },
         required: ['position'],

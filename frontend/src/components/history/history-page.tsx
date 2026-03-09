@@ -42,6 +42,7 @@ export default function HistoryPage({ onSelectReplay, onBack }: HistoryPageProps
           <option value="caro">Caro</option>
           <option value="chess">Chess</option>
           <option value="battleship">Battleship</option>
+          <option value="jungle">Jungle Chess</option>
         </select>
       </div>
 

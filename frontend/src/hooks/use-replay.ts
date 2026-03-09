@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { Chess } from 'chess.js';
 import type { GameType, RecordedMove } from '../types/game-types';
 import { CaroEngine } from './replay-engine';
+import { JungleReplayEngine } from './jungle-replay-engine';
 
 /**
  * Manages replay state: step through recorded moves on a local engine.
@@ -21,6 +22,13 @@ export function useReplay(moves: RecordedMove[], gameType: GameType) {
           chess.move(moves[i].move as string);
         }
         return chess.fen();
+      }
+      if (gameType === 'jungle') {
+        const jungleEngine = new JungleReplayEngine();
+        for (let i = 0; i <= turn && i < moves.length; i++) {
+          jungleEngine.makeMove(moves[i].move as string);
+        }
+        return jungleEngine.getBoard();
       }
       const engine = new CaroEngine();
       for (let i = 0; i <= turn && i < moves.length; i++) {

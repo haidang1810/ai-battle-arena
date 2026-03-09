@@ -100,6 +100,7 @@ export default function SetupPage({ onGameCreated }: SetupPageProps) {
     { value: 'caro', label: 'Caro (Gomoku)', desc: '15x15 board, 5 in a row' },
     { value: 'chess', label: 'Chess', desc: 'Standard FIDE rules' },
     { value: 'battleship', label: 'Battleship', desc: 'Ships + targeting' },
+    { value: 'jungle', label: 'Jungle Chess (Co Thu)', desc: '9x7, animal ranks, rivers & traps' },
   ];
 
   const canStart = players[0].modelId && players[1].modelId && !loading;
@@ -114,7 +115,7 @@ export default function SetupPage({ onGameCreated }: SetupPageProps) {
       {/* Game Type */}
       <section className="space-y-3">
         <label className="block text-sm font-medium text-gray-300">Game</label>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {gameTypes.map((gt) => (
             <button
               key={gt.value}
@@ -138,8 +139,8 @@ export default function SetupPage({ onGameCreated }: SetupPageProps) {
           <PlayerSetupCard
             key={idx}
             label={idx === 0
-              ? `Player 1 (${gameType === 'chess' ? 'White' : 'X'})`
-              : `Player 2 (${gameType === 'chess' ? 'Black' : 'O'})`}
+              ? `Player 1 (${gameType === 'chess' ? 'White' : gameType === 'jungle' ? 'Red' : 'X'})`
+              : `Player 2 (${gameType === 'chess' ? 'Black' : gameType === 'jungle' ? 'Blue' : 'O'})`}
             player={players[idx]}
             providers={providers}
             onProviderChange={(pid) => onProviderChange(idx, pid)}
